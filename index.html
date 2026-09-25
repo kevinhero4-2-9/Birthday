@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Una sorpresa para  Anita 💗</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8e6bbd,
+                    #e9a6c7
+                );
+
+            color: white;
+
+            overflow-x: hidden;
+
+        }
+
+        .inicio {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+
+        }
+
+
+        .contenedor {
+
+            width: 90%;
+            max-width: 600px;
+
+            min-height: 500px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            background:
+                rgba(255,255,255,0.12);
+
+            backdrop-filter: blur(10px);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.3);
+
+            border-radius: 30px;
+
+            padding: 40px;
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,0.2);
+
+        }
+
+
+        .corazon {
+
+            font-size: 60px;
+
+            margin-bottom: 25px;
+
+            animation:
+                latido 1.5s infinite;
+
+        }
+
+
+        h1 {
+
+            font-size: 2.2rem;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .texto {
+
+            font-size: 1.1rem;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .boton {
+
+            border: none;
+
+            padding:
+                16px 30px;
+
+            border-radius: 50px;
+
+            background: #ffb6d5;
+
+            color: #4d2944;
+
+            font-size: 1rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+        .boton:hover {
+
+            transform: scale(1.08);
+
+            background: #ffd0e3;
+
+        }
+
+        .sorpresa {
+
+            display: none;
+
+            min-height: 100vh;
+
+            padding: 60px 20px;
+
+            text-align: center;
+
+            animation:
+                aparecer 1.5s ease;
+
+        }
+
+
+        .titulo {
+
+            font-size: 3rem;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .subtitulo {
+
+            font-size: 1.2rem;
+
+            margin-bottom: 50px;
+
+        }
+
+
+        .galeria {
+
+            max-width: 900px;
+
+            margin: auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 45px;
+
+        }
+
+
+        .recuerdo {
+
+            background: white;
+
+            padding: 12px 12px 25px;
+
+            width: 280px;
+
+            border-radius: 5px;
+
+            color: #333;
+
+            box-shadow:
+                0 15px 30px
+                rgba(0,0,0,0.25);
+
+            opacity: 0;
+
+            transform:
+                translateY(60px)
+                rotate(-4deg);
+
+            transition:
+                opacity 1s ease,
+                transform 1s ease;
+
+        }
+
+
+        .recuerdo.visible {
+
+            opacity: 1;
+
+            transform:
+                translateY(0)
+                rotate(-4deg);
+
+        }
+
+
+        .recuerdo:nth-child(even) {
+
+            transform:
+                translateY(60px)
+                rotate(4deg);
+
+        }
+
+
+        .recuerdo:nth-child(even).visible {
+
+            transform:
+                translateY(0)
+                rotate(4deg);
+
+        }
+
+
+        .recuerdo img {
+
+            width: 100%;
+
+            height: 300px;
+
+            object-fit: cover;
+
+            display: block;
+
+        }
+
+
+        .recuerdo p {
+
+            font-family: cursive;
+
+            font-size: 1.1rem;
+
+            margin-top: 15px;
+
+        }
+
+        .final {
+
+            margin-top: 70px;
+
+            opacity: 0;
+
+            animation:
+                aparecer 2s ease forwards;
+
+            animation-delay: 5s;
+
+        }
+
+
+        .final h2 {
+
+            font-size: 2rem;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .final p {
+
+            font-size: 1.1rem;
+
+            line-height: 1.6;
+
+        }
+
+        .decoracion {
+
+            position: fixed;
+
+            font-size: 25px;
+
+            opacity: 0.7;
+
+            animation:
+                flotar 4s infinite ease-in-out;
+
+            z-index: 5;
+
+        }
+
+
+        .uno {
+
+            top: 10%;
+            left: 15%;
+
+        }
+
+
+        .dos {
+
+            top: 20%;
+            right: 15%;
+
+            animation-delay: 1s;
+
+        }
+
+
+        .tres {
+
+            bottom: 15%;
+            left: 20%;
+
+            animation-delay: 2s;
+
+        }
+
+
+        .cuatro {
+
+            bottom: 10%;
+            right: 20%;
+
+            animation-delay: 3s;
+
+        }
+
+
+        @keyframes latido {
+
+            0%, 100% {
+
+                transform: scale(1);
+
+            }
+
+            50% {
+
+                transform: scale(1.15);
+
+            }
+
+        }
+
+
+        @keyframes flotar {
+
+            0%, 100% {
+
+                transform:
+                    translateY(0);
+
+            }
+
+            50% {
+
+                transform:
+                    translateY(-15px);
+
+            }
+
+        }
+
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    scale(0.9);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    scale(1);
+
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            h1 {
+
+                font-size: 1.8rem;
+
+            }
+
+
+            .titulo {
+
+                font-size: 2.2rem;
+
+            }
+
+
+            .recuerdo {
+
+                width: 85%;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="decoracion uno">
+        ✨
+    </div>
+
+    <div class="decoracion dos">
+        ♡
+    </div>
+
+    <div class="decoracion tres">
+        ✧
+    </div>
+
+    <div class="decoracion cuatro">
+        💗
+    </div>
+
+    <audio
+        id="musica"
+        src="musica 1.mp4"
+        loop>
+    </audio>
+
+
+    <section
+        class="inicio"
+        id="inicio">
+
+        <main class="contenedor">
+
+            <div class="corazon">
+                💗
+            </div>
+
+
+            <h1>
+                Tengo una pequeña
+                sorpresa para ti...
+            </h1>
+
+
+            <p class="texto">
+                Preparé algo especial
+                para celebrar tu cumpleaños 🎂
+            </p>
+
+
+            <button
+                class="boton"
+                onclick="abrirSorpresa()">
+
+                Abrir sorpresa 💌
+
+            </button>
+
+        </main>
+
+    </section>
+
+    <section
+        class="sorpresa"
+        id="sorpresa">
+
+
+        <h1 class="titulo">
+
+            ¡Feliz cumpleaños, Nena! 🎉
+
+        </h1>
+
+
+        <p class="subtitulo">
+
+            Algunos recuerdos que
+            quería compartir contigo 💗
+
+        </p>
+
+        <div class="galeria">
+
+
+            <div class="recuerdo">
+
+                <img src="fotos/foto 1.jpeg" alt="Nuestro recuerdo 1">
+
+                <p>
+                    Un recuerdo que
+                    siempre voy a recordar 💗
+                </p>
+
+            </div>
+
+
+
+            <div class="recuerdo">
+
+                <img
+                    src="fotos/foto 2.jpeg"
+                    alt="Nuestro recuerdo 2">
+
+                <p>
+                    Qué buenos momentos
+                    hemos pasado ✨
+                </p>
+
+            </div>
+
+
+
+            <div class="recuerdo">
+
+                <img
+                    src="fotos/foto 3.jpeg"
+                    alt="Nuestro recuerdo 3">
+
+                <p>
+                    Otro momento
+                    que vale la pena guardar 📸
+                </p>
+
+            </div>
+
+
+
+            <div class="recuerdo">
+
+                <img
+                    src="fotos/foto 4.jpeg"
+                    alt="Nuestro recuerdo 4">
+
+                <p>
+                    Y que sigan los
+                    buenos momentos (aunque ya no estemos en el mismo equipo:( ) 💕
+                </p>
+
+            </div>
+
+
+        </div>
+
+        <div class="final">
+
+            <h2>
+                Gracias por todos
+                estos momentos, Anita 💗
+            </h2>
+
+            <p>
+
+                Espero que este nuevo año
+                de tu vida esté lleno de
+                momentos increíbles.
+
+                <br><br>
+
+                ¡Feliz cumpleaños! 🎂✨
+
+            </p>
+
+        </div>
+
+
+    </section>
+
+    <script>
+
+
+        function abrirSorpresa() {
+
+            document
+                .getElementById("inicio")
+                .style.display = "none";
+
+            document
+                .getElementById("sorpresa")
+                .style.display = "block";
+
+            const musica =
+                document.getElementById("musica");
+
+            musica.volume = 0.5;
+
+            musica.play()
+                .catch(() => {
+
+                    console.log(
+                        "El navegador bloqueó el audio."
+                    );
+
+                });
+
+            const fotos =
+                document.querySelectorAll(
+                    ".recuerdo"
+                );
+
+
+            fotos.forEach(
+                (foto, indice) => {
+
+                    setTimeout(() => {
+
+                        foto.classList.add(
+                            "visible"
+                        );
+
+                    }, indice * 2000);
+
+                }
+            );
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
